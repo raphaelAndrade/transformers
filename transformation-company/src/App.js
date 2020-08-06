@@ -1,13 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './Components/Layout/Header-Component';
+import Instructions from './Components/Layout/Instructions-Components';
+import Add_Fighter from './Components/Add_Fighter-Components';
+
 import './App.scss';
 
 function App() {
   return (
     <>
-      <div className="stage">
-        Stage 
-      </div>
+      <Header />
+      <Instructions />
+      <Add_Fighter />
     </>
   );
 }
