@@ -18,7 +18,7 @@ function Add_Fighter() {
                             </div>
                             <div className="col">
                                 <select className="custom-select" id="validationCustom04" required>
-                                    <option selected disabled value="">Choose your Team</option>
+                                    <option defaultValue disabled value="">Choose your Team</option>
                                     <option> Autobots</option>
                                     <option> Decepticons</option>
                                 </select>
@@ -27,34 +27,34 @@ function Add_Fighter() {
                                 <h3>Abilities</h3>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Strength"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Strength"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Endurance"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Endurance"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Firepower"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Firepower"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Intelligence"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Intelligence"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Rank"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Rank"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Skill"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Skill"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control" maxlength="10" placeholder="Speed"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Speed"/>
                             </div>
                             <div className="col-3">
-                                <input type="number" className="form-control"  maxlength="10"placeholder="Courage"/>
+                                <input type="number" className="form-control" min="1" max="10" placeholder="Courage"/>
                             </div>
                             <div className="col-6">
-                                <button type="button" class="btn btn-primary">Add a Fighter</button>
+                                <button type="button" className="btn btn-primary">Add a Fighter</button>
                             </div>
                             <div className="col-6">
-                                <button type="button" class="btn btn-danger">Fight</button>
+                                <button type="button" className="btn btn-danger">Fight</button>
                             </div>
                         </div>
                     </form>
