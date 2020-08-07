@@ -5,8 +5,8 @@ function Instructions() {
     return(
         <Consumer>
             {value => {
-                const {name} = value;
-                console.log(name);
+                const {fighters} = value;
+                console.log(fighters);
                 return(
                     <>
                         <div className="container">
@@ -36,6 +36,7 @@ function Instructions() {
                 )
             }}
         </Consumer>
+        
     )
 }
 export default Instructions;
