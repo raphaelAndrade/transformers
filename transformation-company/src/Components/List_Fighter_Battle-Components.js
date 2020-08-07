@@ -4,24 +4,8 @@ import { Consumer } from './Context/Context'
 
 
 function List_Fighter_Battle() {
-    const [numberBattles,setNumberBattles] = useState(0);
-
     const [resultBattle,setResultBattle] = useState(false);
-
-
-    const compareResult = (autoBolts, decepticons) => { //TODO: find a better name
-        console.log(autoBolts);
-        console.log(decepticons);
-        if(autoBolts.length < decepticons.length ) {
-            setNumberBattles(autoBolts.length);
-        } else {
-            setNumberBattles(decepticons.length)
-        }
-        // console.log("entrou na funcao e passou por tudo");
-        // console.log(`The number of battle is ${numberBattles}`);
-    }
-
-    const fight = (dispatch,fighters) => { //TODO: Use a promise Here to fix hell callbacks
+    const fight = (dispatch,fighters) => { 
         dispatch({type: "FIGHT", payload: fighters})
      }
 

@@ -3,6 +3,11 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case "SHOWTABLE":
+        return {
+          ...state,
+          showTableFight: [action.payload]
+        }
       case "ADD":
         return {
           ...state,
@@ -12,11 +17,6 @@ const reducer = (state, action) => {
         return {
           ...state,
           showResultBattle: [action.payload]
-        }
-        case "SHOWTABLE":
-        return {
-          ...state,
-          showTableFight: [action.payload]
         }
         case "FIGHT":
         let arrayAutoBots = [];
