@@ -49,3 +49,16 @@ button {
 table {
   background: white;
 }
+
+// Result Battle Component
+
+.stage {
+  width: 100%;  
+  min-height: 400px;
+  background: rgba($color: black, $alpha: 0.7);
+  border: 1px solid rgba($color: white, $alpha: 0.2);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}

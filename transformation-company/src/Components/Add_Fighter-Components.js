@@ -118,7 +118,7 @@ function Add_Fighter() {
                                                     onChange={onChange}
                                                     required
                                                     >
-                                                    <option selected disabled>Choose your Team</option>
+                                                    <option defaultValue disabled>Choose your Team</option>
                                                     <option value="Autobots">Autobots</option>
                                                     <option value="Decepticons">Decepticons</option>
                                                 </select>

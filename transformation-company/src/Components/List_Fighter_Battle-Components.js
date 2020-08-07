@@ -1,21 +1,38 @@
 import React, {useState} from 'react';
 import { Consumer } from './Context/Context'
 
-function List_Fighter_Battle() {
-    // const deleteUser = (id, dispatch) => {
-        // TODO: Create a delete fight function
-       // e.preventDefault();
-       // dispatch({ type: "DELETE_FIGHT", payload: id });
-    // };
 
-    const fight = (dispatch,fighters) => { 
-        dispatch({type: "FIGHT", payload: fighters});
+
+function List_Fighter_Battle() {
+    const [numberBattles,setNumberBattles] = useState(0);
+
+    const [resultBattle,setResultBattle] = useState(false);
+
+
+    const compareResult = (autoBolts, decepticons) => { //TODO: find a better name
+        console.log(autoBolts);
+        console.log(decepticons);
+        if(autoBolts.length < decepticons.length ) {
+            setNumberBattles(autoBolts.length);
+        } else {
+            setNumberBattles(decepticons.length)
+        }
+        // console.log("entrou na funcao e passou por tudo");
+        // console.log(`The number of battle is ${numberBattles}`);
+    }
+
+    const fight = (dispatch,fighters) => { //TODO: Use a promise Here to fix hell callbacks
+        dispatch({type: "FIGHT", payload: fighters})
      }
+
+     const showResultBattle  = (dispatch) => {
+        setResultBattle(true)
+        dispatch({type: "SHOWRESULT", payload: resultBattle});
+    }
     return(
         <Consumer>
             {value => {
-                const {fighters,showTableFight,dispatch} = value;
-                console.log(fighters)
+                const {fighters,showTableFight,dispatch,autobotsTeam,decepticonsTeam} = value;
                 return(
                     <>
                      {showTableFight ? 
@@ -68,7 +85,8 @@ function List_Fighter_Battle() {
                             <div className="row">
                                 <div className="col-md-12">
                                     <button type="submit" className="btn btn-danger" onClick={()=> {
-                                        fight(dispatch,fighters)
+                                        fight(dispatch,fighters);
+                                        showResultBattle(dispatch);
                                     }}>Add a Fighter</button>  
                                 </div>
                             </div>

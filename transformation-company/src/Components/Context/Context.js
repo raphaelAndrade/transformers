@@ -8,6 +8,11 @@ const reducer = (state, action) => {
           ...state,
           fighters: [action.payload, ...state.fighters]
         }
+        case "SHOWRESULT":
+        return {
+          ...state,
+          showResultBattle: [action.payload]
+        }
         case "SHOWTABLE":
         return {
           ...state,
@@ -24,8 +29,6 @@ const reducer = (state, action) => {
                 arrayDecepticons.push(item)
             }
         }
-        console.log(arrayAutoBots);
-        console.log(arrayDecepticons);
         return {
             ...state,
             autobotsTeam: [...arrayAutoBots],
@@ -42,6 +45,7 @@ export class Provider extends React.Component {
         autobotsTeam: [],
         decepticonsTeam: [],
         showTableFight: false,
+        showResultBattle: false,
         dispatch: action => {
             this.setState(state => {
               return reducer(state, action);
