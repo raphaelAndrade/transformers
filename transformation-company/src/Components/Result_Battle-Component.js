@@ -3,14 +3,41 @@ import { Consumer } from './Context/Context'
 
 function Result_Battle() {
     const [numberBattles,setNumberBattles] = useState(0);
-    const compareResult = (autoBolts, decepticons) => { //TODO: find a better name
+    const [winnerTeam, setwinnerTeam] = useState("");
+
+    const compareResult = (autoBolts, decepticons) => { //TODO: find a better name and find the best way to do this function
+        let Variautobolt = 0;
+        let Varidecepticons = 0;
         if(autoBolts.length < decepticons.length ) {
             setNumberBattles(autoBolts.length);
+            for(let val of autoBolts){
+                for(let item of decepticons) {
+                  if(val.abilities.courage > item.abilities.courage && val.abilities.courage - item.abilities.courage <= 4){
+                    Variautobolt++;
+                  } else if(val.abilities.overall > item.abilities.overall) {
+                    Variautobolt++;
+                  } else {
+                    Varidecepticons++; 
+                  }
+                }
+            }
         } else {
-            setNumberBattles(decepticons.length)
+            setNumberBattles(decepticons.length);
+            for(let val of decepticons){
+                for(let item of autoBolts) {
+                    if(val.abilities.overall > item.abilities.overall) {
+                        Varidecepticons++;
+                      } else {
+                        Variautobolt++; 
+                      }
+                }
+            }
         }
-            console.log("entrou na funcao e passou por tudo");
-            console.log(`The number of battle is ${numberBattles}`);
+        if(Variautobolt > Varidecepticons){
+            setwinnerTeam("AutoBolt")
+        }else {
+            setwinnerTeam("Decepticon")
+        }
     }
     return(
         <Consumer>
@@ -31,6 +58,7 @@ function Result_Battle() {
                                 <div className="stage">
                                     <ul>
                                         <li><span> {numberBattles}</span> Battles</li>
+                                        <li>The winning team is {winnerTeam}</li>
                                     </ul>
                                 </div>
                             </div>

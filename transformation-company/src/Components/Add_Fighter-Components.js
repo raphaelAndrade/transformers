@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import {Consumer} from './Context/Context';
-//import { useId } from "react-id-generator";
 
 function Add_Fighter() {
     const [name,setName] = useState("");
@@ -57,7 +56,6 @@ function Add_Fighter() {
       const onSubmit = (dispatch, e) => {
         e.preventDefault();
         const newFighter = {
-        // id: useId(),
           name, 
           team,
           abilities:{
@@ -84,11 +82,6 @@ function Add_Fighter() {
         <Consumer>
             {value => {
                 const {dispatch} = value;
-                
-                // Object.values(autobotsTeam).map(val => {
-                //     console.log(val)
-                // })
-
                 return(
                     <>
                        <div className="container">
@@ -118,7 +111,7 @@ function Add_Fighter() {
                                                     onChange={onChange}
                                                     required
                                                     >
-                                                    <option defaultValue disabled>Choose your Team</option>
+                                                    <option selected disabled>Choose your Team</option>
                                                     <option value="Autobots">Autobots</option>
                                                     <option value="Decepticons">Decepticons</option>
                                                 </select>
@@ -135,6 +128,7 @@ function Add_Fighter() {
                                                     name="strength" 
                                                     placeholder="Strength"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -146,6 +140,7 @@ function Add_Fighter() {
                                                     name="endurance" 
                                                     placeholder="Endurance"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -157,6 +152,7 @@ function Add_Fighter() {
                                                     name="firepower" 
                                                     placeholder="Firepower"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -168,6 +164,7 @@ function Add_Fighter() {
                                                     name="intelligence" 
                                                     placeholder="Intelligence"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -179,6 +176,7 @@ function Add_Fighter() {
                                                     name="rank" 
                                                     placeholder="Rank"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -190,6 +188,7 @@ function Add_Fighter() {
                                                     name="skill" 
                                                     placeholder="Skill"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -201,6 +200,7 @@ function Add_Fighter() {
                                                     name="speed" 
                                                     placeholder="Speed"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -212,6 +212,7 @@ function Add_Fighter() {
                                                     name="courage" 
                                                     placeholder="Courage"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col-12">

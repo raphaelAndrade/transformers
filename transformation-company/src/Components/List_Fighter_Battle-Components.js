@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 import { Consumer } from './Context/Context'
 
-
-
 function List_Fighter_Battle() {
     const [resultBattle,setResultBattle] = useState(false);
     const fight = (dispatch,fighters) => { 
@@ -16,7 +14,7 @@ function List_Fighter_Battle() {
     return(
         <Consumer>
             {value => {
-                const {fighters,showTableFight,dispatch,autobotsTeam,decepticonsTeam} = value;
+                const {fighters,showTableFight,dispatch} = value;
                 return(
                     <>
                      {showTableFight ? 
@@ -40,7 +38,6 @@ function List_Fighter_Battle() {
                                                 <th scope="col">Speed</th>
                                                 <th scope="col">Courage</th>
                                                 <th scope="col">Overall Rating</th>
-                                                {/* <th scope="col">Delete Fighter</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -58,7 +55,6 @@ function List_Fighter_Battle() {
                                                     <td>{val.abilities.speed}</td>
                                                     <td>{val.abilities.courage}</td>
                                                     <td>{val.abilities.overall}</td>
-                                                    {/* <td><a href="#" onClick={deleteUser.bind(this,dispatch)}><i class="fas fa-trash-alt"></i></a></td> */}
                                                 </tr>
                                             ))
                                         }
@@ -71,7 +67,7 @@ function List_Fighter_Battle() {
                                     <button type="submit" className="btn btn-danger" onClick={()=> {
                                         fight(dispatch,fighters);
                                         showResultBattle(dispatch);
-                                    }}>Add a Fighter</button>  
+                                    }}>Fighter</button>  
                                 </div>
                             </div>
                        </div> : " " 
