@@ -68,7 +68,8 @@ function Add_Fighter() {
             rank,
             skill,
             speed,
-            courage
+            courage,
+            overall: parseInt(strength) + parseInt(strength) + parseInt(intelligence) + parseInt(speed) + parseInt(endurance) + parseInt(firepower)
           }
         }
         dispatch({type: "ADD", payload: newFighter});

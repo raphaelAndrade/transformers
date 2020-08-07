@@ -15,6 +15,7 @@ function List_Fighter_Battle() {
         <Consumer>
             {value => {
                 const {fighters,showTableFight,dispatch} = value;
+                console.log(fighters)
                 return(
                     <>
                      {showTableFight ? 
@@ -37,23 +38,25 @@ function List_Fighter_Battle() {
                                                 <th scope="col">Skill</th>
                                                 <th scope="col">Speed</th>
                                                 <th scope="col">Courage</th>
+                                                <th scope="col">Overall Rating</th>
                                                 {/* <th scope="col">Delete Fighter</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
                                         {
-                                            Object.keys(fighters).map((val, index) => (
+                                            Object.values(fighters).map((val, index) => (
                                                 <tr key={index}>
-                                                    <td>{fighters[val].name}</td>
-                                                    <td>{fighters[val].team}</td>
-                                                    <td>{fighters[val].abilities.strength}</td>
-                                                    <td>{fighters[val].abilities.endurance}</td>
-                                                    <td>{fighters[val].abilities.firepower}</td>
-                                                    <td>{fighters[val].abilities.intelligence}</td>
-                                                    <td>{fighters[val].abilities.rank}</td>
-                                                    <td>{fighters[val].abilities.skill}</td>
-                                                    <td>{fighters[val].abilities.speed}</td>
-                                                    <td>{fighters[val].abilities.courage}</td>
+                                                    <td>{val.name}</td>
+                                                    <td>{val.team}</td>
+                                                    <td>{val.abilities.strength}</td>
+                                                    <td>{val.abilities.endurance}</td>
+                                                    <td>{val.abilities.firepower}</td>
+                                                    <td>{val.abilities.intelligence}</td>
+                                                    <td>{val.abilities.rank}</td>
+                                                    <td>{val.abilities.skill}</td>
+                                                    <td>{val.abilities.speed}</td>
+                                                    <td>{val.abilities.courage}</td>
+                                                    <td>{val.abilities.overall}</td>
                                                     {/* <td><a href="#" onClick={deleteUser.bind(this,dispatch)}><i class="fas fa-trash-alt"></i></a></td> */}
                                                 </tr>
                                             ))
