@@ -4,7 +4,7 @@ import Header from './Components/Layout/Header-Component';
 import Instructions from './Components/Layout/Instructions-Components';
 import Add_Fighter from './Components/Add_Fighter-Components';
 import List_Fighter_Battle from './Components/List_Fighter_Battle-Components';
-import {Provider} from './Components/Context/Context';
+import { Provider } from './Components/Context/Context';
 
 import './App.scss';
 

@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import {Consumer} from './Context/Context';
+//import { useId } from "react-id-generator";
 
 function Add_Fighter() {
     const [name,setName] = useState("");
@@ -14,7 +15,6 @@ function Add_Fighter() {
     const [courage,setCourage] = useState("");
     const [showTable,setShowFightTable] = useState(false);
 
-    
     const onChange = e => {
         let element = (e.target.name);
         switch (element) {
@@ -57,6 +57,7 @@ function Add_Fighter() {
       const onSubmit = (dispatch, e) => {
         e.preventDefault();
         const newFighter = {
+        // id: useId(),
           name, 
           team,
           abilities:{
@@ -78,12 +79,15 @@ function Add_Fighter() {
         setShowFightTable(true)
         dispatch({type: "SHOWTABLE", payload: showTable});
     }
-      
-    
     return(
         <Consumer>
             {value => {
                 const {dispatch} = value;
+                
+                // Object.values(autobotsTeam).map(val => {
+                //     console.log(val)
+                // })
+
                 return(
                     <>
                        <div className="container">
@@ -103,6 +107,7 @@ function Add_Fighter() {
                                                     placeholder="Name of your Transformers"
                                                     name="name"
                                                     onChange={onChange}
+                                                    required
                                                 />
                                             </div>
                                             <div className="col">
@@ -110,10 +115,11 @@ function Add_Fighter() {
                                                     className="custom-select"
                                                     name="team" 
                                                     onChange={onChange}
+                                                    required
                                                     >
                                                     <option selected disabled>Choose your Team</option>
-                                                    <option value="Autobots"> Autobots</option>
-                                                    <option value="Decepticons"> Decepticons</option>
+                                                    <option value="Autobots">Autobots</option>
+                                                    <option value="Decepticons">Decepticons</option>
                                                 </select>
                                             </div>
                                             <div className="col-12">

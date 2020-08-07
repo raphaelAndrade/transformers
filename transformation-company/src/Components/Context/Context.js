@@ -8,12 +8,29 @@ const reducer = (state, action) => {
           ...state,
           fighters: [action.payload, ...state.fighters]
         }
-        break;
         case "SHOWTABLE":
         return {
           ...state,
           showTableFight: [action.payload]
         }
+        case "FIGHT":
+        let arrayAutoBots = [];
+        let arrayDecepticons = [];
+        for(let item of action.payload) {
+            if(item.team == "Autobots") {
+                arrayAutoBots.push(item)
+            }
+            else {
+                arrayDecepticons.push(item)
+            }
+        }
+        console.log(arrayAutoBots);
+        console.log(arrayDecepticons);
+        return {
+            ...state,
+            autobotsTeam: [...arrayAutoBots],
+            decepticonsTeam: [...arrayDecepticons]
+      };
         default:
           return state
     }
@@ -22,6 +39,8 @@ const reducer = (state, action) => {
 export class Provider extends React.Component {
     state = {
         fighters: [],
+        autobotsTeam: [],
+        decepticonsTeam: [],
         showTableFight: false,
         dispatch: action => {
             this.setState(state => {

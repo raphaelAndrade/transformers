@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Consumer } from './Context/Context'
 
 function List_Fighter_Battle() {
+    // const deleteUser = (id, dispatch) => {
+        // TODO: Create a delete fight function
+       // e.preventDefault();
+       // dispatch({ type: "DELETE_FIGHT", payload: id });
+    // };
+
+    const fight = (dispatch,fighters) => { 
+        dispatch({type: "FIGHT", payload: fighters});
+     }
     return(
         <Consumer>
             {value => {
-                const {fighters,showTableFight} = value;
+                const {fighters,showTableFight,dispatch} = value;
                 return(
                     <>
                      {showTableFight ? 
@@ -28,15 +37,16 @@ function List_Fighter_Battle() {
                                                 <th scope="col">Skill</th>
                                                 <th scope="col">Speed</th>
                                                 <th scope="col">Courage</th>
-                                                <th scope="col">Delete Fighter</th>
+                                                {/* <th scope="col">Delete Fighter</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
                                         {
                                             Object.keys(fighters).map((val, index) => (
-                                                <tr>
+                                                <tr key={index}>
                                                     <td>{fighters[val].name}</td>
                                                     <td>{fighters[val].team}</td>
+                                                    <td>{fighters[val].abilities.strength}</td>
                                                     <td>{fighters[val].abilities.endurance}</td>
                                                     <td>{fighters[val].abilities.firepower}</td>
                                                     <td>{fighters[val].abilities.intelligence}</td>
@@ -44,7 +54,7 @@ function List_Fighter_Battle() {
                                                     <td>{fighters[val].abilities.skill}</td>
                                                     <td>{fighters[val].abilities.speed}</td>
                                                     <td>{fighters[val].abilities.courage}</td>
-                                                    <td>Delete</td>
+                                                    {/* <td><a href="#" onClick={deleteUser.bind(this,dispatch)}><i class="fas fa-trash-alt"></i></a></td> */}
                                                 </tr>
                                             ))
                                         }
@@ -54,7 +64,9 @@ function List_Fighter_Battle() {
                             </div>
                             <div className="row">
                                 <div className="col-md-12">
-                                    <button type="submit" className="btn btn-danger">Add a Fighter</button>  
+                                    <button type="submit" className="btn btn-danger" onClick={()=> {
+                                        fight(dispatch,fighters)
+                                    }}>Add a Fighter</button>  
                                 </div>
                             </div>
                        </div> : " " 
