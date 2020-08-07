@@ -12,6 +12,8 @@ function Add_Fighter() {
     const [skill,setSkill] = useState("");      
     const [speed,setSpeed] = useState("");      
     const [courage,setCourage] = useState("");
+    const [showTable,setShowFightTable] = useState(false);
+
     
     const onChange = e => {
         let element = (e.target.name);
@@ -48,6 +50,9 @@ function Add_Fighter() {
           break;
         }
       }
+      const cleaningForm = () => {
+        // TODO: Clear the fields after submitting
+      }
 
       const onSubmit = (dispatch, e) => {
         e.preventDefault();
@@ -66,7 +71,14 @@ function Add_Fighter() {
           }
         }
         dispatch({type: "ADD", payload: newFighter});
+        // TODO: Clear the fields after submitting
       }
+
+      const showTableFight  = (dispatch) => {
+        setShowFightTable(true)
+        dispatch({type: "SHOWTABLE", payload: showTable});
+    }
+      
     
     return(
         <Consumer>
@@ -99,9 +111,9 @@ function Add_Fighter() {
                                                     name="team" 
                                                     onChange={onChange}
                                                     >
-                                                    <option defaultValue disabled value="">Choose your Team</option>
-                                                    <option> Autobots</option>
-                                                    <option> Decepticons</option>
+                                                    <option selected disabled>Choose your Team</option>
+                                                    <option value="Autobots"> Autobots</option>
+                                                    <option value="Decepticons"> Decepticons</option>
                                                 </select>
                                             </div>
                                             <div className="col-12">
@@ -195,11 +207,15 @@ function Add_Fighter() {
                                                     onChange={onChange}
                                                 />
                                             </div>
-                                            <div className="col-6">
-                                                <button type="submit" className="btn btn-primary">Add a Fighter</button>
-                                            </div>
-                                            <div className="col-6">
-                                                <button type="button" className="btn btn-danger">Fight</button>
+                                            <div className="col-12">
+                                                <button 
+                                                    type="submit" 
+                                                    onClick={() => {
+                                                        showTableFight(dispatch);
+                                                    }} 
+                                                    className="btn btn-primary">
+                                                        Add fighter
+                                                </button>
                                             </div>
                                         </div>
                                     </form>

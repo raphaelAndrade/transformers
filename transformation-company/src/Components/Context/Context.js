@@ -8,6 +8,12 @@ const reducer = (state, action) => {
           ...state,
           fighters: [action.payload, ...state.fighters]
         }
+        break;
+        case "SHOWTABLE":
+        return {
+          ...state,
+          showTableFight: [action.payload]
+        }
         default:
           return state
     }
@@ -16,6 +22,7 @@ const reducer = (state, action) => {
 export class Provider extends React.Component {
     state = {
         fighters: [],
+        showTableFight: false,
         dispatch: action => {
             this.setState(state => {
               return reducer(state, action);

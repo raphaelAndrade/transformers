@@ -11,6 +11,7 @@ body{
 h1,h2,h3{
   font-family: 'Russo One', sans-serif;
   color: white;
+  margin-bottom: 40px;
 }
 
 h2,h3 {
@@ -39,7 +40,12 @@ input[type="number"] {
 }
 
 button {
-  width: 100%;
+  width: 50%;
   display: block !important;
   margin: 30px auto;
+}
+
+// List Fighter Battle
+table {
+  background: white;
 }
