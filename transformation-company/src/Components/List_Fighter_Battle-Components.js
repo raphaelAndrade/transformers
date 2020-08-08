@@ -15,6 +15,7 @@ const List_Fighter_Battle = () => {
         <Consumer>
             {value => {
                 const {fighters,showTableFight,dispatch} = value;
+                fighters.reverse();
                 return(
                     <>
                      {showTableFight ? 
@@ -25,7 +26,7 @@ const List_Fighter_Battle = () => {
                             <div className="row">
                                 <div className="col-md-12">
                                 <table className="table">
-                                        <thead>
+                                        <thead> 
                                             <tr>
                                                 <th scope="col">Fighter</th>
                                                 <th scope="col">Team</th>
