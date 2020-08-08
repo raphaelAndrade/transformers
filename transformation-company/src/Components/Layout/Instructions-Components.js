@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Instructions() {
+const Instructions = () => {
     return(
         <>
             <div className="container">

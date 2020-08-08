@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Consumer } from './Context/Context'
 
-function List_Fighter_Battle() {
+const List_Fighter_Battle = () => {
     const [resultBattle,setResultBattle] = useState(false);
     const fight = (dispatch,fighters) => { 
         dispatch({type: "FIGHT", payload: fighters})

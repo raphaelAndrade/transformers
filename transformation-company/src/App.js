@@ -10,7 +10,7 @@ import { Provider } from './Components/Context/Context';
 
 import './App.scss';
 
-function App() {
+const App = () => {
   return (
     <Provider>
       <>

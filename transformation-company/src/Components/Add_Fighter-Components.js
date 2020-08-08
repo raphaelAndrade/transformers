@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import {Consumer} from './Context/Context';
 
-function Add_Fighter() {
+const Add_Fighter = () => {
     const [name,setName] = useState("");
     const [team,setTeam] = useState("");
     const [strength,setStrength] = useState("");

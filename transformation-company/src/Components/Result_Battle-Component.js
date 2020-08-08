@@ -1,7 +1,7 @@
 import React, {useState}  from 'react';
 import { Consumer } from './Context/Context'
 
-function Result_Battle() {
+const Result_Battle = () => {
     const [numberBattles,setNumberBattles] = useState(0);
     const [winnerTeam, setwinnerTeam] = useState("");
 
