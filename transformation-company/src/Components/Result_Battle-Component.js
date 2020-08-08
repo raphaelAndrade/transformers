@@ -75,16 +75,20 @@ const Result_Battle = () => {
                     survivor = battleField[0].pop();
                     numberOfSurvivor.push(survivor);
                 }
-                console.log(numberOfSurvivor);
             } else {
                 differenceFightersNumber = battleField[1].length - battleField[0].length;
                 for(let i = 0; i < differenceFightersNumber; i++) {
                     survivor = battleField[1].pop();
                     numberOfSurvivor.push(survivor);
                 }
-                console.log(numberOfSurvivor);
             }
         }
+        //
+        for(let i = 0; i < battleField[0].length; i++){
+            console.log(battleField[0][i]);
+            console.log(battleField[1][i]);
+        }
+      
     }
 
     return(
