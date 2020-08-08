@@ -60,11 +60,18 @@ const Result_Battle = () => {
             battleField[i] = []
         }
 
-        let autoboltsTeam = battleField[0] = [...autoBolts];
+        let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
         let decepticonsTeam = battleField[1] = [...decepticons];
         let differenceFightersNumber = 0;
         let survivor;
         let numberOfSurvivor = [];
+        let winnerTeamArray = [];
+        let loseTeamArray = [];
+        let Variautobolt = 0;
+        let Varidecepticons = 0;
+        let numeroBatalha = 0;
+        
+
         
 
         //who survivor
@@ -83,12 +90,40 @@ const Result_Battle = () => {
                 }
             }
         }
-        //
+        
         for(let i = 0; i < battleField[0].length; i++){
-            console.log(battleField[0][i]);
-            console.log(battleField[1][i]);
+            if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() === "predaking"){
+                setwinnerTeam("All fighters were destroyed");              
+             }
+            if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
+                winnerTeamArray.push(battleField[0][i]);
+                loseTeamArray.push(battleField[1][i]);
+                Variautobolt++;
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+            } else {
+                winnerTeamArray.push(battleField[1][i]);
+                loseTeamArray.push(battleField[0][i]);
+                Varidecepticons++
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+            }
         }
-      
+
+        // console.log("winner" + winnerTeamArray);
+        // console.log("lose" + loseTeamArray);
+
+        for(let val of loseTeamArray) {
+            console.log(val)
+        }
+
+            if(Alldestroyed == true) {
+                setwinnerTeam("All fighters were destroyed")
+             } else if(Variautobolt > Varidecepticons){
+                setwinnerTeam("The winning team is AutoBolt")
+            }else {
+                setwinnerTeam("The winning team is Decepticon")
+            }
     }
 
     return(
