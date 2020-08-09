@@ -3,10 +3,127 @@ import { Consumer } from './Context/Context'
 
 const Result_Battle = () => {
     const [numberBattles,setNumberBattles] = useState(0);
-    const [winnerTeam, setwinnerTeam] = useState("");
+    const [battleResult, setBattleResult] = useState("");
     const [Alldestroyed, setAlldestroyed] = useState(false);
+    const [winnerTeam, setWinnerTeam] = useState([])
 
-    // const compareResult = (autoBolts, decepticons) => { //TODO: find a better name and find the best way to do this function and fix battle numbers
+
+
+    var winnerTeamArray = []
+    const compareResult = (autoBolts, decepticons) => {
+        const battleField = [] //Field Of Battle
+   
+        for(let i = 0; i < 2; i++){
+            battleField[i] = []
+        }
+
+        let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
+        let decepticonsTeam = battleField[1] = [...decepticons];
+        let differenceFightersNumber = 0;
+        let survivor;
+        let numberOfSurvivor = [];
+       // let winnerTeamArray = [];
+        let loseTeamArray = [];
+        let Variautobolt = 0;
+        let Varidecepticons = 0;
+        let numeroBatalha = 0;
+        
+
+        
+
+        //who survivor
+        for(let i = 0; i < battleField.length; i++){
+            if(battleField[0].length > battleField[1].length){
+                differenceFightersNumber = battleField[0].length - battleField[1].length;
+                for(let i = 0; i < differenceFightersNumber; i++) {
+                    survivor = battleField[0].pop();
+                    numberOfSurvivor.push(survivor);
+                }
+            } else {
+                differenceFightersNumber = battleField[1].length - battleField[0].length;
+                for(let i = 0; i < differenceFightersNumber; i++) {
+                    survivor = battleField[1].pop();
+                    numberOfSurvivor.push(survivor);
+                }
+            }
+        }
+        
+        for(let i = 0; i < battleField[0].length; i++){
+            if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() === "predaking"){
+                setAlldestroyed(true);              
+             }
+            if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
+                winnerTeamArray.push(battleField[0][i].name);
+                loseTeamArray.push(battleField[1][i].name);
+                //setWinnerTeam(winnerTeamArray);
+                Variautobolt++;
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+            } else {
+                winnerTeamArray.push(battleField[1][i].name);
+                loseTeamArray.push(battleField[0][i].name);
+                //setWinnerTeam(winnerTeamArray);
+                Varidecepticons++
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+            }
+        }
+
+            if(Alldestroyed == true) {
+                setBattleResult("All fighters were destroyed")
+             } else if(Variautobolt > Varidecepticons){
+                setBattleResult("The winning team is AutoBolt")
+            }else {
+                setBattleResult("The winning team is Decepticon")
+            }
+    }
+
+    return(
+        <Consumer>
+            {value => {
+                const {showResultBattle,autobotsTeam,decepticonsTeam} = value;
+                compareResult(autobotsTeam,decepticonsTeam);
+                return(
+                    <>
+                    {showResultBattle ? 
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <h2>Battle Result</h2>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-12">
+                                <div className="stage">
+                                    <ul>
+                                        <li><span>{numberBattles}</span> Battles</li>
+                                        <li>{battleResult}</li>
+                                        {Alldestroyed == false ? <li>
+                                            <ul>
+                                                <li>The Winning Fighters are:</li>
+                                                {winnerTeamArray.map((val, key) => (
+                                                  <li key={key}>{val}</li>
+                                                ))}
+                                            </ul>
+                                        </li> : " "}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div> : " "
+                    }
+                    </>
+                )
+            }}
+        </Consumer>
+    )
+}
+export default Result_Battle;
+
+
+
+
+// const compareResult = (autoBolts, decepticons) => { //TODO: find a better name and find the best way to do this function and fix battle numbers
     //     let Variautobolt = 0;
     //     let Varidecepticons = 0;
     //     let numeroBatalha = 0;
@@ -52,110 +169,3 @@ const Result_Battle = () => {
     //         setwinnerTeam("The winning team is Decepticon")
     //     }
     // }
-
-    const compareResult = (autoBolts, decepticons) => {
-        const battleField = [] //Field Of Battle
-        
-        for(let i = 0; i < 2; i++){
-            battleField[i] = []
-        }
-
-        let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
-        let decepticonsTeam = battleField[1] = [...decepticons];
-        let differenceFightersNumber = 0;
-        let survivor;
-        let numberOfSurvivor = [];
-        let winnerTeamArray = [];
-        let loseTeamArray = [];
-        let Variautobolt = 0;
-        let Varidecepticons = 0;
-        let numeroBatalha = 0;
-        
-
-        
-
-        //who survivor
-        for(let i = 0; i < battleField.length; i++){
-            if(battleField[0].length > battleField[1].length){
-                differenceFightersNumber = battleField[0].length - battleField[1].length;
-                for(let i = 0; i < differenceFightersNumber; i++) {
-                    survivor = battleField[0].pop();
-                    numberOfSurvivor.push(survivor);
-                }
-            } else {
-                differenceFightersNumber = battleField[1].length - battleField[0].length;
-                for(let i = 0; i < differenceFightersNumber; i++) {
-                    survivor = battleField[1].pop();
-                    numberOfSurvivor.push(survivor);
-                }
-            }
-        }
-        
-        for(let i = 0; i < battleField[0].length; i++){
-            if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() === "predaking"){
-                setwinnerTeam("All fighters were destroyed");              
-             }
-            if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
-                winnerTeamArray.push(battleField[0][i]);
-                loseTeamArray.push(battleField[1][i]);
-                Variautobolt++;
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-            } else {
-                winnerTeamArray.push(battleField[1][i]);
-                loseTeamArray.push(battleField[0][i]);
-                Varidecepticons++
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-            }
-        }
-
-        // console.log("winner" + winnerTeamArray);
-        // console.log("lose" + loseTeamArray);
-
-        for(let val of loseTeamArray) {
-            console.log(val)
-        }
-
-            if(Alldestroyed == true) {
-                setwinnerTeam("All fighters were destroyed")
-             } else if(Variautobolt > Varidecepticons){
-                setwinnerTeam("The winning team is AutoBolt")
-            }else {
-                setwinnerTeam("The winning team is Decepticon")
-            }
-    }
-
-    return(
-        <Consumer>
-            {value => {
-                const {showResultBattle,autobotsTeam,decepticonsTeam} = value;
-                compareResult(autobotsTeam,decepticonsTeam);
-                return(
-                    <>
-                    {showResultBattle ? 
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <h2>Battle Result</h2>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="stage">
-                                    <ul>
-                                        <li><span>{numberBattles}</span> Battles</li>
-                                        <li>{winnerTeam}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> : " "
-                    }
-                    </>
-                )
-            }}
-        </Consumer>
-    )
-}
-export default Result_Battle;
