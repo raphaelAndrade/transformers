@@ -22,96 +22,86 @@ const Result_Battle = () => {
         let differenceFightersNumber = 0;
         var survivor;
         let numberOfSurvivor = [];
-       // let winnerTeamArray = [];
         let loseTeamArray = [];
         let Variautobolt = 0;
         let Varidecepticons = 0;
-        let numeroBatalha = 0;
+        var battleNum = 0;
         
 
         
 
         //who survivor
         for(let i = 0; i < battleField.length; i++){
-            if(battleField[0].length > battleField[1].length){
-                differenceFightersNumber = battleField[0].length - battleField[1].length;
+            if(autoboltsTeam.length > decepticonsTeam.length){
+                differenceFightersNumber = autoboltsTeam.length - decepticonsTeam.length;
                 for(let i = 0; i < differenceFightersNumber; i++) {
-                    survivor = battleField[0].pop();
+                    survivor = autoboltsTeam.pop();
                     numberOfSurvivor.push(survivor);
                 }
             } else {
-                differenceFightersNumber = battleField[1].length - battleField[0].length;
+                differenceFightersNumber = decepticonsTeam.length - autoboltsTeam.length;
                 for(let i = 0; i < differenceFightersNumber; i++) {
-                    survivor = battleField[1].pop();
+                    survivor = decepticonsTeam.pop();
                     numberOfSurvivor.push(survivor);
                 }
             }
         }
 
         
-        for(let i = 0; i < battleField[0].length; i++){
-            console.log(parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage));
-            if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() === "predaking"){
+        for(let i = 0; i < autoboltsTeam.length; i++){
+            if(autoboltsTeam[i].name.toLowerCase() === "optimus prime" && decepticonsTeam[i].name.toLowerCase() === "predaking"){
                 setAlldestroyed(true);              
-             } else if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() !== "predaking"){
-                winnerTeamArray.push(battleField[0][i].name);
-                loseTeamArray.push(battleField[1][i].name);
+             } else if(autoboltsTeam[i].name.toLowerCase() === "optimus prime" && decepticonsTeam[i].name.toLowerCase() !== "predaking"){
+                winnerTeamArray.push(autoboltsTeam[i].name);
+                loseTeamArray.push(decepticonsTeam[i].name);
                 Variautobolt++;
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-             } else if(battleField[1][i].name.toLowerCase() === "predaking" && battleField[0][i].name.toLowerCase() !== "optimus prime") {
-                winnerTeamArray.push(battleField[1][i].name);
-                loseTeamArray.push(battleField[0][i].name);
+                battleNum++;
+                setNumberBattles(battleNum);
+             } else if(decepticonsTeam[i].name.toLowerCase() === "predaking" && autoboltsTeam[i].name.toLowerCase() !== "optimus prime") {
+                winnerTeamArray.push(decepticonsTeam[i].name);
+                loseTeamArray.push(autoboltsTeam[i].name);
                 Varidecepticons++
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-             } else if(parseInt(battleField[0][i].abilities.courage) > parseInt(battleField[1][i].abilities.courage) && parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage) >= 4){ //TODO: check it again
-                winnerTeamArray.push(battleField[0][i].name);
-                loseTeamArray.push(battleField[1][i].name);
+                battleNum++;
+                setNumberBattles(battleNum);
+             } else if(parseInt(autoboltsTeam[i].abilities.courage) > parseInt(decepticonsTeam[i].abilities.courage) && parseInt(autoboltsTeam[i].abilities.courage) - parseInt(decepticonsTeam[i].abilities.courage) >= 4){ //TODO: check it again
+                winnerTeamArray.push(autoboltsTeam[i].name);
+                loseTeamArray.push(decepticonsTeam[i].name);
                 Variautobolt++;
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-             }  else if(parseInt(battleField[1][i].abilities.courage) > parseInt(battleField[0][i].abilities.courage) && parseInt(battleField[1][i].abilities.courage) - parseInt(battleField[0][i].abilities.courage) >= 4){ 
-                winnerTeamArray.push(battleField[1][i].name);
-                loseTeamArray.push(battleField[0][i].name);
-                Varidecepticons++;
-                numeroBatalha++;
-                setNumberBattles(numeroBatalha);
-             }
-             
-            //  else if(battleField[0][i].abilities.courage > battleField[1][i].abilities.courage && ){
-            //      alert(parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage))
-            //      //alert(battleField[1][i].abilities.courage); 
-            //      if(battleField[0][i].abilities.courage - battleField[1][i].abilities.courage <4 ){
-                     
-            //         winnerTeamArray.push(battleField[0][i].name);
-            //         loseTeamArray.push(battleField[1][i].name);
-            //         Variautobolt++;
-            //         numeroBatalha++;
-            //         setNumberBattles(numeroBatalha);
-            //      }
-             }
-             
-            // if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
-            //     winnerTeamArray.push(battleField[0][i].name);
-            //     loseTeamArray.push(battleField[1][i].name);
-            //     Variautobolt++;
-            //     numeroBatalha++;
-            //     setNumberBattles(numeroBatalha);
-            // } else {
-            //     winnerTeamArray.push(battleField[1][i].name);
-            //     loseTeamArray.push(battleField[0][i].name);
-            //     Varidecepticons++
-            //     numeroBatalha++;
-            //     setNumberBattles(numeroBatalha);
-            // }
-        // }
+                battleNum++;
+                setNumberBattles(battleNum);
+             }  else if(parseInt(decepticonsTeam[i].abilities.courage) > parseInt(autoboltsTeam[i].abilities.courage) && parseInt(decepticonsTeam[i].abilities.courage) - parseInt(autoboltsTeam[i].abilities.courage) >= 4){ 
+                winnerTeamArray.push(autoboltsTeam[i].name);
+                loseTeamArray.push(decepticonsTeam[i].name);
+                Variautobolt++;
+                battleNum++;
+                setNumberBattles(battleNum);
+             } else if(parseInt(autoboltsTeam[i].abilities.overall === decepticonsTeam[i].abilities.overall)){
+                Variautobolt = Variautobolt;
+                Varidecepticons = Varidecepticons;
+                battleNum++;
+                setNumberBattles(battleNum);
+             } else if(autoboltsTeam[i].abilities.overall > decepticonsTeam[i].abilities.overall){
+                winnerTeamArray.push(autoboltsTeam[i].name);
+                loseTeamArray.push(decepticonsTeam[i].name);
+                Variautobolt++;
+                battleNum++;
+                setNumberBattles(battleNum);
+            } else {
+                winnerTeamArray.push(decepticonsTeam[i].name);
+                loseTeamArray.push(autoboltsTeam[i].name);
+                Varidecepticons++
+                battleNum++;
+                setNumberBattles(battleNum);
+                }
+            }
 
             if(Alldestroyed == true) {
                 setBattleResult("All fighters were destroyed")
              } else if(Variautobolt > Varidecepticons){
                 setBattleResult("The winning team is AutoBolt")
-            }else {
+            }else if(Variautobolt == 0 && Varidecepticons == 0){
+                setBattleResult("The fight ended without winners")
+            } else {
                 setBattleResult("The winning team is Decepticon")
             }
     }
@@ -157,57 +147,3 @@ const Result_Battle = () => {
     )
 }
 export default Result_Battle;
-
-
-
-
-// const compareResult = (autoBolts, decepticons) => { //TODO: find a better name and find the best way to do this function and fix battle numbers
-    //     let Variautobolt = 0;
-    //     let Varidecepticons = 0;
-    //     let numeroBatalha = 0;
-
-    //     if(autoBolts.length < decepticons.length ) {
-    //         setNumberBattles(autoBolts.length);
-    //         for(let val of autoBolts){
-    //             for(let item of decepticons) {
-    //                if(val.name.toLowerCase() === "optimus prime" && item.name.toLowerCase() === "predaking"){
-    //                 setAlldestroyed(true);
-    //                }else if(val.name.toLowerCase() === "optimus prime" || item.name.toLowerCase() === "predaking") {
-    //                 Variautobolt++;
-    //                } else if(val.abilities.courage > item.abilities.courage && val.abilities.courage - item.abilities.courage <= 4){
-    //                 Variautobolt++;
-    //               } else if(val.abilities.overall > item.abilities.overall) {
-    //                 Variautobolt++;
-    //               } else {
-    //                 Varidecepticons++; 
-    //               }
-    //             }
-    //         }
-    //         setNumberBattles(numeroBatalha);
-    //     } else { //TODO: do the same with the first case but for decepticons.
-    //         setNumberBattles(decepticons.length);
-    //         for(let val of decepticons){
-    //             for(let item of autoBolts) {
-    //                 if(val.name.toLowerCase() === "predaking" && item.name.toLowerCase() === "optimus prime"){
-    //                     setAlldestroyed(true);
-    //                   } else if(val.abilities.overall > item.abilities.overall) {
-    //                     Varidecepticons++;
-    //                   } else {
-    //                     Variautobolt++; 
-    //                   }
-    //             }
-    //         }
-    //     }
-
-    //     if(Alldestroyed == true) {
-    //         setwinnerTeam("All fighters were destroyed")
-    //     } else if(Variautobolt > Varidecepticons){
-    //         setwinnerTeam("The winning team is AutoBolt")
-    //     }else {
-    //         setwinnerTeam("The winning team is Decepticon")
-    //     }
-    // }
-
-
-
-                
