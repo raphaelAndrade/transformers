@@ -20,7 +20,7 @@ const Result_Battle = () => {
         let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
         let decepticonsTeam = battleField[1] = [...decepticons];
         let differenceFightersNumber = 0;
-        let survivor;
+        var survivor;
         let numberOfSurvivor = [];
        // let winnerTeamArray = [];
         let loseTeamArray = [];
@@ -47,27 +47,65 @@ const Result_Battle = () => {
                 }
             }
         }
+
         
         for(let i = 0; i < battleField[0].length; i++){
+            console.log(parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage));
             if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() === "predaking"){
                 setAlldestroyed(true);              
-             }
-            if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
+             } else if(battleField[0][i].name.toLowerCase() === "optimus prime" && battleField[1][i].name.toLowerCase() !== "predaking"){
                 winnerTeamArray.push(battleField[0][i].name);
                 loseTeamArray.push(battleField[1][i].name);
-                //setWinnerTeam(winnerTeamArray);
                 Variautobolt++;
                 numeroBatalha++;
                 setNumberBattles(numeroBatalha);
-            } else {
+             } else if(battleField[1][i].name.toLowerCase() === "predaking" && battleField[0][i].name.toLowerCase() !== "optimus prime") {
                 winnerTeamArray.push(battleField[1][i].name);
                 loseTeamArray.push(battleField[0][i].name);
-                //setWinnerTeam(winnerTeamArray);
                 Varidecepticons++
                 numeroBatalha++;
                 setNumberBattles(numeroBatalha);
-            }
-        }
+             } else if(parseInt(battleField[0][i].abilities.courage) > parseInt(battleField[1][i].abilities.courage) && parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage) >= 4){ //TODO: check it again
+                winnerTeamArray.push(battleField[0][i].name);
+                loseTeamArray.push(battleField[1][i].name);
+                Variautobolt++;
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+             }  else if(parseInt(battleField[1][i].abilities.courage) > parseInt(battleField[0][i].abilities.courage) && parseInt(battleField[1][i].abilities.courage) - parseInt(battleField[0][i].abilities.courage) >= 4){ 
+                winnerTeamArray.push(battleField[1][i].name);
+                loseTeamArray.push(battleField[0][i].name);
+                Varidecepticons++;
+                numeroBatalha++;
+                setNumberBattles(numeroBatalha);
+             }
+             
+            //  else if(battleField[0][i].abilities.courage > battleField[1][i].abilities.courage && ){
+            //      alert(parseInt(battleField[0][i].abilities.courage) - parseInt(battleField[1][i].abilities.courage))
+            //      //alert(battleField[1][i].abilities.courage); 
+            //      if(battleField[0][i].abilities.courage - battleField[1][i].abilities.courage <4 ){
+                     
+            //         winnerTeamArray.push(battleField[0][i].name);
+            //         loseTeamArray.push(battleField[1][i].name);
+            //         Variautobolt++;
+            //         numeroBatalha++;
+            //         setNumberBattles(numeroBatalha);
+            //      }
+             }
+             
+            // if(battleField[0][i].abilities.overall > battleField[1][i].abilities.overall){
+            //     winnerTeamArray.push(battleField[0][i].name);
+            //     loseTeamArray.push(battleField[1][i].name);
+            //     Variautobolt++;
+            //     numeroBatalha++;
+            //     setNumberBattles(numeroBatalha);
+            // } else {
+            //     winnerTeamArray.push(battleField[1][i].name);
+            //     loseTeamArray.push(battleField[0][i].name);
+            //     Varidecepticons++
+            //     numeroBatalha++;
+            //     setNumberBattles(numeroBatalha);
+            // }
+        // }
 
             if(Alldestroyed == true) {
                 setBattleResult("All fighters were destroyed")
@@ -169,3 +207,7 @@ export default Result_Battle;
     //         setwinnerTeam("The winning team is Decepticon")
     //     }
     // }
+
+
+
+                

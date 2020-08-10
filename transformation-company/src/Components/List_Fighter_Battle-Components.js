@@ -15,7 +15,7 @@ const List_Fighter_Battle = () => {
         <Consumer>
             {value => {
                 const {fighters,showTableFight,dispatch} = value;
-                fighters.reverse();
+                //fighters.reverse();
                 return(
                     <>
                      {showTableFight ? 
