@@ -49,10 +49,6 @@ const Add_Fighter = () => {
           break;
         }
       }
-      const cleaningForm = () => {
-        // TODO: Clear the fields after submitting
-      }
-
       const onSubmit = (dispatch, e) => {
         e.preventDefault();
         const newFighter = {
@@ -71,7 +67,18 @@ const Add_Fighter = () => {
           }
         }
         dispatch({type: "ADD", payload: newFighter});
-        // TODO: Clear the fields after submitting
+
+     //Clear the fields after submitting
+      setName(" ");
+      setStrength(" ");
+      setEndurance(" ");
+      setFirepower(" ");
+      setIntelligence(" ");
+      setSkill(" ")
+      setSpeed(" ");
+      setRank(" ")
+      setCourage(" ");
+      setTeam(null);
       }
 
       const showTableFight  = (dispatch) => {
@@ -100,6 +107,7 @@ const Add_Fighter = () => {
                                                     className="form-control" 
                                                     placeholder="Name of your Transformers"
                                                     name="name"
+                                                    value={name}
                                                     onChange={onChange}
                                                     required
                                                 />
@@ -129,6 +137,7 @@ const Add_Fighter = () => {
                                                     placeholder="Strength"
                                                     onChange={onChange}
                                                     required
+                                                    value={strength}
                                                 />
                                             </div>
                                             <div className="col-3">
@@ -140,6 +149,7 @@ const Add_Fighter = () => {
                                                     name="endurance" 
                                                     placeholder="Endurance"
                                                     onChange={onChange}
+                                                    value={endurance}
                                                     required
                                                 />
                                             </div>
@@ -152,6 +162,7 @@ const Add_Fighter = () => {
                                                     name="firepower" 
                                                     placeholder="Firepower"
                                                     onChange={onChange}
+                                                    value={firepower}
                                                     required
                                                 />
                                             </div>
@@ -164,6 +175,7 @@ const Add_Fighter = () => {
                                                     name="intelligence" 
                                                     placeholder="Intelligence"
                                                     onChange={onChange}
+                                                    value={intelligence}
                                                     required
                                                 />
                                             </div>
@@ -175,6 +187,7 @@ const Add_Fighter = () => {
                                                     max="10"
                                                     name="rank" 
                                                     placeholder="Rank"
+                                                    value={rank}
                                                     onChange={onChange}
                                                     required
                                                 />
@@ -187,6 +200,7 @@ const Add_Fighter = () => {
                                                     max="10"
                                                     name="skill" 
                                                     placeholder="Skill"
+                                                    value={skill}
                                                     onChange={onChange}
                                                     required
                                                 />
@@ -200,6 +214,7 @@ const Add_Fighter = () => {
                                                     name="speed" 
                                                     placeholder="Speed"
                                                     onChange={onChange}
+                                                    value={speed}
                                                     required
                                                 />
                                             </div>
@@ -212,6 +227,7 @@ const Add_Fighter = () => {
                                                     name="courage" 
                                                     placeholder="Courage"
                                                     onChange={onChange}
+                                                    value={courage}
                                                     required
                                                 />
                                             </div>
