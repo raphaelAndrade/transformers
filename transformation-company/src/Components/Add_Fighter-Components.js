@@ -69,7 +69,7 @@ const Add_Fighter = () => {
         dispatch({type: "ADD", payload: newFighter});
 
      //Clear the fields after submitting
-      setName(" ");
+      setName("");
       setStrength(" ");
       setEndurance(" ");
       setFirepower(" ");

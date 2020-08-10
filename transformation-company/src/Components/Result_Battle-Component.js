@@ -5,7 +5,6 @@ const Result_Battle = () => {
     const [numberBattles,setNumberBattles] = useState(0);
     const [battleResult, setBattleResult] = useState("");
     const [Alldestroyed, setAlldestroyed] = useState(false);
-    const [winnerTeam, setWinnerTeam] = useState([]);
     const [survivingFighters, setSurvivingFighters] = useState(false);
 
     var winnerTeamArray = [];
@@ -14,10 +13,6 @@ const Result_Battle = () => {
 
     const compareResult = (autoBolts, decepticons) => {
         const battleField = [] //Field Of Battle
-   
-        for(let i = 0; i < 2; i++){
-            battleField[i] = []
-        }
 
         let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
         let decepticonsTeam = battleField[1] = [...decepticons];
@@ -27,11 +22,15 @@ const Result_Battle = () => {
         let Variautobolt = 0;
         let Varidecepticons = 0;
         var battleNum = 0;
-    
+        let pointOfSkillsAuto = 0;
+        let pointOfSkillsDecep = 0;
         let duplicateOptimos = autoboltsTeam.reduce((acc,val) => (val.name == "optimus prime") ? acc + 1 : acc, 0 );
         let duplicatePredaking = decepticonsTeam.reduce((acc,val) => (val.name == "predaking") ? acc + 1 : acc, 0 );
+   
+        for(let i = 0; i < 2; i++){
+            battleField[i] = []
+        }
 
-        
         //who survivor
         for(let i = 0; i < battleField.length; i++){
             if(autoboltsTeam.length > decepticonsTeam.length){
@@ -48,10 +47,34 @@ const Result_Battle = () => {
                 }
             }
         }
+
+        for( let i = 0; i < autoboltsTeam.length; i++){
+            if(autoboltsTeam[i].team > decepticonsTeam[i].team){
+                pointOfSkillsAuto++;
+            } else {
+                pointOfSkillsDecep++
+            }
+        } 
         for(let i = 0; i < autoboltsTeam.length; i++){
             if(autoboltsTeam[i].name.toLowerCase() === "optimus prime" && decepticonsTeam[i].name.toLowerCase() === "predaking"|| (duplicateOptimos > 1 || duplicatePredaking > 1)){
-                setAlldestroyed(true);              
-             } else if(autoboltsTeam[i].name.toLowerCase() === "optimus prime" && decepticonsTeam[i].name.toLowerCase() !== "predaking"){
+                setAlldestroyed(true);
+                battleNum++;
+                setNumberBattles(battleNum);              
+            }
+            else if(pointOfSkillsAuto >= 3){
+                winnerTeamArray.push(autoboltsTeam[i].name);
+                loseTeamArray.push(decepticonsTeam[i].name);
+                Variautobolt++;
+                battleNum++;
+                setNumberBattles(battleNum);
+            } else if(pointOfSkillsDecep >= 3){
+                winnerTeamArray.push(decepticonsTeam[i].name);
+                loseTeamArray.push(autoboltsTeam[i].name);
+                Varidecepticons++;
+                battleNum++;
+                setNumberBattles(battleNum);
+            }
+             else if(autoboltsTeam[i].name.toLowerCase() === "optimus prime" && decepticonsTeam[i].name.toLowerCase() !== "predaking"){
                 winnerTeamArray.push(autoboltsTeam[i].name);
                 loseTeamArray.push(decepticonsTeam[i].name);
                 Variautobolt++;
@@ -63,7 +86,7 @@ const Result_Battle = () => {
                 Varidecepticons++
                 battleNum++;
                 setNumberBattles(battleNum);
-             } else if(parseInt(autoboltsTeam[i].abilities.courage) > parseInt(decepticonsTeam[i].abilities.courage) && parseInt(autoboltsTeam[i].abilities.courage) - parseInt(decepticonsTeam[i].abilities.courage) >= 4){ //TODO: check it again
+             } else if(parseInt(autoboltsTeam[i].abilities.courage) > parseInt(decepticonsTeam[i].abilities.courage) && parseInt(autoboltsTeam[i].abilities.courage) - parseInt(decepticonsTeam[i].abilities.courage) >= 4){ 
                 winnerTeamArray.push(autoboltsTeam[i].name);
                 loseTeamArray.push(decepticonsTeam[i].name);
                 Variautobolt++;
@@ -76,7 +99,7 @@ const Result_Battle = () => {
                 Variautobolt++;
                 battleNum++;
                 setNumberBattles(battleNum);
-             } else if(parseInt(autoboltsTeam[i].abilities.strength) > parseInt(decepticonsTeam[i].abilities.strength) && parseInt(autoboltsTeam[i].abilities.strength) - parseInt(decepticonsTeam[i].abilities.strength) >= 4){ //TODO: check it again
+             } else if(parseInt(autoboltsTeam[i].abilities.strength) > parseInt(decepticonsTeam[i].abilities.strength) && parseInt(autoboltsTeam[i].abilities.strength) - parseInt(decepticonsTeam[i].abilities.strength) >= 4){ 
                 winnerTeamArray.push(autoboltsTeam[i].name);
                 loseTeamArray.push(decepticonsTeam[i].name);
                 Variautobolt++;
@@ -132,7 +155,6 @@ const Result_Battle = () => {
                 }
                 setBattleResult("The winning team is Decepticon");
             }
-
     }
     return(
         <Consumer>
@@ -184,13 +206,3 @@ const Result_Battle = () => {
     )
 }
 export default Result_Battle;
-
-
-/*
-As regras básicas da batalha são:
-
-○ Se algum lutador perder 4 ou mais pontos de coragem e 3 ou mais pontos de força
-em comparação com seu oponente, o oponente automaticamente vence o confronto, independentemente de
-avaliação geral (oponente fugiu) 50% DONE
-
-*/
