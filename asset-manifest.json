@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/transformer_war/static/css/main.fc780bd9.chunk.css",
+    "main.js": "/transformer_war/static/js/main.0c89aa52.chunk.js",
+    "main.js.map": "/transformer_war/static/js/main.0c89aa52.chunk.js.map",
+    "runtime-main.js": "/transformer_war/static/js/runtime-main.c934a1ab.js",
+    "runtime-main.js.map": "/transformer_war/static/js/runtime-main.c934a1ab.js.map",
+    "static/css/2.ed439b8d.chunk.css": "/transformer_war/static/css/2.ed439b8d.chunk.css",
+    "static/js/2.f2feb4bf.chunk.js": "/transformer_war/static/js/2.f2feb4bf.chunk.js",
+    "static/js/2.f2feb4bf.chunk.js.map": "/transformer_war/static/js/2.f2feb4bf.chunk.js.map",
+    "index.html": "/transformer_war/index.html",
+    "precache-manifest.8857897a43905bc4a03df1d355333034.js": "/transformer_war/precache-manifest.8857897a43905bc4a03df1d355333034.js",
+    "service-worker.js": "/transformer_war/service-worker.js",
+    "static/css/2.ed439b8d.chunk.css.map": "/transformer_war/static/css/2.ed439b8d.chunk.css.map",
+    "static/css/main.fc780bd9.chunk.css.map": "/transformer_war/static/css/main.fc780bd9.chunk.css.map",
+    "static/js/2.f2feb4bf.chunk.js.LICENSE.txt": "/transformer_war/static/js/2.f2feb4bf.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/transformer_war/static/media/bg.9413d448.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c934a1ab.js",
+    "static/css/2.ed439b8d.chunk.css",
+    "static/js/2.f2feb4bf.chunk.js",
+    "static/css/main.fc780bd9.chunk.css",
+    "static/js/main.0c89aa52.chunk.js"
+  ]
+}
