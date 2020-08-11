@@ -14,7 +14,7 @@ const Result_Battle = () => {
     const compareResult = (autoBolts, decepticons) => {
         const battleField = [] //Field Of Battle
 
-        let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create setState
+        let autoboltsTeam = battleField[0] = [...autoBolts]; //TODO: create useState
         let decepticonsTeam = battleField[1] = [...decepticons];
         let differenceFightersNumber = 0;
         let survivor;
@@ -30,8 +30,7 @@ const Result_Battle = () => {
         for(let i = 0; i < 2; i++){
             battleField[i] = []
         }
-
-        //who survivor
+        
         for(let i = 0; i < battleField.length; i++){
             if(autoboltsTeam.length > decepticonsTeam.length){
                 differenceFightersNumber = autoboltsTeam.length - decepticonsTeam.length;
